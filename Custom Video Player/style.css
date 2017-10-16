@@ -11,17 +11,37 @@ body {
   padding: 0;
   display:flex;
   min-height:100vh;
-  background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
+  background: linear-gradient(135deg,
+                              #153299 0%,
+                              #105799 50%,
+                              #7e4ae8 100%);
   background-size:cover;
   align-items: center;
   justify-content: center;
 }
-
 .player {
   max-width:750px;
   border:5px solid rgba(0,0,0,0.2);
+  border-radius: 10px;
   box-shadow:0 0 20px rgba(0,0,0,0.2);
   position: relative;
-  font-size: 0;
   overflow: hidden;
+}
+
+.player__video {
+  width: 100%;
+  display: block;
+}
+.player__controls {
+  display:flex;
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  transform: translateY(100%);
+  transition:all .3s;
+  flex-wrap:wrap;
+  background:rgba(0,0,0,0.1);
+}
+.player:hover .player__controls {
+  transform: translateY(0);
 }
