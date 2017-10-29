@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Type Ahead</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form class="search-form">
+        <h4 class="head_text">Population growth 2000 to 2003</h4>
+        <input type="text" class="search" placeholder="City or State">
+        <ul class="suggestions">
+            <li>Filter for a city</li>
+            <li>or a state</li>
+        </ul>
+        <!-- <input type="submit" name="" value="search"> -->
+    </form>
+
+    <script>
+        document.querySelector(".search-form")
+        .addEventListener("submit", (e) => {e.preventDefault()} );
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+        // before filtering, make the api call and store the data
+        const cities = [];
+        fetch(endpoint).then(
+            result => result.json()).then(
+                data => cities.push(...data)
+            )
+        // function to have dynamic matching
+        function findMatches(wordToMatch, cities) {
+            return cities.filter(place => {
+                // here we need to figure out if the city or state matches what was searched
+                const regex = new RegExp(wordToMatch, 'gi');
+                return place.city.match(regex) || place.state.match(regex)
+            });
+        }
+        // function to get nicer looking numbers
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function displayMatches() {
+            const matchArray = findMatches(this.value, cities);
+            const html = matchArray.map(place => {
+                // make some highlight for regex value
+                const regex = new RegExp(this.value, 'gi');
+                const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+                const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+
+                const placeGrowth = place.growth_from_2000_to_2013.includes("-")
+                    ? `<span class="negative">${place.growth_from_2000_to_2013}</span>`
+                    : `<span class="positive">${place.growth_from_2000_to_2013}</span>`
+
+                return `
+                    <li>
+                        <span class="name">
+                            ${cityName},
+                            ${stateName},
+                        </span>
+                        <span class="population">
+                            <span>${numberWithCommas(place.population)}</span>
+                            ${placeGrowth}
+                        </span>
+                    </li>
+                `;
+            }).join('');
+            // replace new html with old html
+            suggestions.innerHTML = html;
+        }
+        const searchInput = document.querySelector('.search');
+        const suggestions = document.querySelector('.suggestions');
+        searchInput.addEventListener('change', displayMatches);
+        searchInput.addEventListener('keyup', displayMatches);
+
+    </script>
+</body>
+
+</html>
