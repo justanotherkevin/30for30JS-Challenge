@@ -29,8 +29,10 @@ svg {
 .wrapper {
   padding: 20px;
   max-width: 350px;
+  max-height: 50vh;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
 }
 
 h2 {
