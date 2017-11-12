@@ -40,7 +40,9 @@ h2 {
   margin: 0;
   font-weight: 200;
 }
-
+li:nth-child(even) {
+  background-color: #efefef;
+}
 .plates {
   margin: 0;
   padding: 0;
