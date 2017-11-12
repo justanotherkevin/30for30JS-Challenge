@@ -37,13 +37,23 @@
       text,
       done: false
     }
+    items.push(item);
+    mountList(items, itemsList);
     // form.reset()
     this.reset();
 
   }
-  function mountList( items=[], itemList ) {
-    
+  function mountList( items=[], groupItems ) {
+    groupItems.innerHTML = items.map((item, i) => {
+      return(`
+        <li>
+
+          <lablel for="">${item.text}</lablel>
+        </li>
+      `)
+    }).join('')
   }
+
   addItems.addEventListener('submit', addItem);
 </script>
 
