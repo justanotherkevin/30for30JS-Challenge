@@ -13,54 +13,38 @@
 
     <ul class="cool">
       <li>
-        <a href="#">About Me</a>
+        <a href="#">Bacon Ipsum</a>
         <div class="dropdown dropdown1">
           <div class="bio">
-            <img src="https://logo.clearbit.com/wesbos.com">
+            <img src="https://baconipsum.com">
             <p>Bacon ipsum dolor amet boudin bacon rump pork. Cupim short ribs turducken alcatra pig turkey. Chicken boudin ham hock hamburger jerky doner swine short loin t-bone pork belly capicola ribeye. Beef ham ground round, shankle meatloaf turducken doner landjaeger corned beef tri-tip sirloin tenderloin bresaola rump jerky. Capicola alcatra jerky pig bacon picanha, hamburger prosciutto jowl pastrami sausage.</p>
           </div>
         </div>
       </li>
       <li>
-        <a href="#">Courses</a>
+        <a href="#">Website</a>
         <ul class="dropdown courses">
           <li>
-            <span class="code">RFB</span>
-            <a href="https://ReactForBeginners.com">React For Beginners</a>
+            <span class="code">JSON API</span>
+            <a href="https://baconipsum.com/json-api/">REST interface</a>
           </li>
           <li>
-            <span class="code">ES6</span>
-            <a href="https://ES6.io">ES6 For Everyone</a>
+            <span class="code">Github</span>
+            <a href="https://github.com/petenelson/wp-any-ipsum">Their Codes</a>
           </li>
           <li>
-            <span class="code">STPU</span>
-            <a href="https://SublimeTextBook.com">Sublime Text Power User</a>
-          </li>
-          <li>
-            <span class="code">WTF</span>
-            <a href="http://flexbox.io">What The Flexbox?!</a>
-          </li>
-          <li>
-            <span class="code">LRX</span>
-            <a href="http://LearnRedux.com">Learn Redux</a>
-          </li>
-          <li>
-            <span class="code">CLPU</span>
-            <a href="http://CommandLinePowerUser.com">Command Line Power User</a>
-          </li>
-          <li>
-            <span class="code">MMD</span>
-            <a href="http://MasteringMarkdown.com">Mastering Markdown</a>
+            <span class="code">About</span>
+            <a href="https://baconipsum.com/about/">About page</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#">Other Links</a>
+        <a href="#">Make your own</a>
         <ul class="dropdown dropdown3">
-          <li><a class="button" href="http://twitter.com/wesbos">Twitter</a></li>
-          <li><a class="button" href="http://facebook.com/wesbos.developer">Facebook</a></li>
-          <li><a class="button" href="http://wesbos.com">Blog</a></li>
-          <li><a class="button" href="http://wesbos.com/courses">Course Catalog</a></li>
+          <li><a class="button" href="https://baconipsum.com/">Home</a></li>
+          <!-- <li><a class="button" href="">Facebook</a></li>
+          <li><a class="button" href="">Blog</a></li>
+          <li><a class="button" href="">Course Catalog</a></li> -->
         </ul>
       </li>
     </ul>
@@ -97,6 +81,7 @@
 
   function onMouseLeave() {
     this.classList.remove('trigger-enter', 'trigger-enter-active');
+    background.classList.contains('open') && background.classList.remove('open');
   }
 
   triggers.forEach( trigger => trigger.addEventListener('mouseenter', onMouseEnter) );
