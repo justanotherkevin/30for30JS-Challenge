@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Cool</h2>
   <nav class="top">
     <div class="dropdownBackground">
       <span class="arrow"></span>
@@ -18,7 +17,7 @@
         <div class="dropdown dropdown1">
           <div class="bio">
             <img src="https://logo.clearbit.com/wesbos.com">
-            <p>Wes Bos sure does love web development. He teaches things like JavaScript, CSS and BBQ. Wait. BBQ isn't part of web development. It should be though!</p>
+            <p>Bacon ipsum dolor amet boudin bacon rump pork. Cupim short ribs turducken alcatra pig turkey. Chicken boudin ham hock hamburger jerky doner swine short loin t-bone pork belly capicola ribeye. Beef ham ground round, shankle meatloaf turducken doner landjaeger corned beef tri-tip sirloin tenderloin bresaola rump jerky. Capicola alcatra jerky pig bacon picanha, hamburger prosciutto jowl pastrami sausage.</p>
           </div>
         </div>
       </li>
@@ -74,18 +73,29 @@
 
   function onMouseEnter() {
     this.classList.add('trigger-enter');
-    setTimeout(() =>
-      this.classList.add('trigger-enter-active'), 150
-    );
+    setTimeout(() => (this.classList.contains('trigger-enter')) && this.classList.add('trigger-enter-active'), 150 );
+
     background.classList.add('open')
 
     const dropdown = this.querySelector('.dropdown')
-    const dropdownCords = dropdown.getBoundingClientRect();
+    const dropdownCoords = dropdown.getBoundingClientRect();
     const navCords = nav.getBoundingClientRect();
-    console.log(dropdownCords, navCords);
+
+    const coords = {
+      height: dropdownCoords.height,
+      width: dropdownCoords.width,
+      top: dropdownCoords.top - navCords.top,
+      left: dropdownCoords.left - navCords.left,
+    }
+
+    background.style.setProperty('height', `${coords.height}px`)
+    background.style.setProperty('width', `${coords.width}px`)
+    background.style.setProperty('top', `${coords.top}px`)
+    background.style.setProperty('left', `${coords.left}px`)
+
   }
+
   function onMouseLeave() {
-    console.log('leave')
     this.classList.remove('trigger-enter', 'trigger-enter-active');
   }
 
